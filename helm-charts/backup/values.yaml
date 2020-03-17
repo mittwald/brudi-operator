@@ -14,11 +14,14 @@ cronjob:
   successfulJobsHistoryLimit: 1
 
 brudi:
-  config:
-  #  tar:
-  #    options:
-  #      flags:
-  #        file: /tmp/foo.tar
+  config: {}
+    # mongodump:
+    #   options:
+    #     flags:
+    #       host: test-mongodb
+    #       port: 27017
+    #       gzip: false
+    #       archive: /tmp/mongo.dump
   cli:
     command: "version"
     restic: false
