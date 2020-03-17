@@ -6,7 +6,7 @@ metadata:
     {{- include "backup.labels" . | nindent 4 }}
 data:
   brudi.yaml: |-
-{{- if .Values.configmap }}
+{{- if .Values.config }}
     # User-supplied configuration:
-{{ tpl .Values.configmap . | indent 4 }}
+{{ tpl .Values.config . | indent 4 }}
 {{- end }}
