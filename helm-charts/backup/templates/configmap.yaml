@@ -8,5 +8,5 @@ data:
   brudi.yaml: |-
 {{- if .Values.brudi.config }}
     # User-supplied configuration:
-{{ toYaml .Values.brudi.config | nindent 4 }}
+{{- toYaml .Values.brudi.config | nindent 4 }}
 {{- end }}
