@@ -1,0 +1,29 @@
+name: Test Brudi-Operator
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install requirements
+        run: bash $(pwd)/scripts/requirements.sh
+
+      - name: Test brudi-operator chart
+        run: >
+          helm template deploy/helm-chart/brudi-operator/ --debug &&
+          helm lint deploy/helm-chart/brudi-operator/
+
+      - name: Test backup chart
+        run: >
+          helm template helm-charts/backup/ --debug &&
+          helm lint helm-charts/backup/
+
+      - name: Test docker build
+        run: bash $(pwd)/scripts/docker-build-tag.sh latest
