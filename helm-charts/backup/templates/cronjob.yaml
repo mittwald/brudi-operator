@@ -56,7 +56,8 @@ spec:
                 - "brudi"
               args:
                 - {{ .Values.brudi.cli.command | quote }}
-                - "-c /etc/config/brudi.yaml"
+                - "-c"
+                - "/etc/config/brudi.yaml"
                 {{-  if .Values.brudi.cli.restic }}
                 - "--restic"
                 {{-  end }}

@@ -14,12 +14,11 @@ cronjob:
   successfulJobsHistoryLimit: 1
 
 brudi:
-  config: {}
-  # config: |
-  #   tar:
-  #     options:
-  #       flags:
-  #         file: /tmp/foo.tar
+  config:
+  #  tar:
+  #    options:
+  #      flags:
+  #        file: /tmp/foo.tar
   cli:
     command: "version"
     restic: false
