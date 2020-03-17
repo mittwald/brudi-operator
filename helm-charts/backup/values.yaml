@@ -2,8 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
-
 image:
   repository: quay.io/mittwald/brudi
   pullPolicy: IfNotPresent
@@ -17,12 +15,15 @@ cronjob:
 
 brudi:
   config: {}
+  # config:
+  #   tar:
+  #     options:
+  #       flags:
+  #         file: /tmp/foo.tar
   cli:
     command: "version"
     restic: false
     cleanup: false
-
-command: ""
 
 additionalEnv: {}
 

@@ -6,6 +6,4 @@ metadata:
     {{- include "backup.labels" . | nindent 4 }}
 data:
   brudi.yaml: |-
-  {{- if .Values.brudi.config }}
-    {{ tpl .Values.brudi.config . | nindent 4 }}
-  {{- end }}
+{{ toYaml .Values.brudi.config | indent 4 }}
