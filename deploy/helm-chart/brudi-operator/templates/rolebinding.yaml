@@ -11,6 +11,9 @@ metadata:
     {{- include "chart.labels" . | nindent 4 }}
 subjects:
     - kind: ServiceAccount
+      {{- if .Values.clusterScoped }}
+      namespace: {{ .Release.Namespace }}
+      {{- end }}
       name: {{ include "chart.fullname" . }}
 roleRef:
   {{- if .Values.clusterScoped }}
