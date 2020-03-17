@@ -1,0 +1,19 @@
+name: Push latest Brudi-Operator
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install requirements
+        run: sudo bash $(pwd)/scripts/requirements.sh
+
+      - name: Push brudi-operator latest
+        run: export PUSH="true" && bash $(pwd)/scripts/docker-build-tag.sh latest
