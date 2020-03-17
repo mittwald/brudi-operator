@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install requirements
-        run: bash $(pwd)/scripts/requirements.sh
+        run: sudo bash $(pwd)/scripts/requirements.sh
 
       - name: Push brudi-operator latest
         run: >
