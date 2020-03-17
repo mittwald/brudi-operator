@@ -16,7 +16,8 @@ jobs:
         run: sudo bash $(pwd)/scripts/requirements.sh
 
       - name: Push brudi-operator latest
+        env:
+          PUSH: "true"
         run: >
-          export PUSH="true" &&
           bash $(pwd)/scripts/docker-build-tag.sh "stable" &&
           bash $(pwd)/scripts/docker-build-tag.sh "${GITHUB_REF:10}"

@@ -16,4 +16,6 @@ jobs:
         run: sudo bash $(pwd)/scripts/requirements.sh
 
       - name: Push brudi-operator latest
-        run: export PUSH="true" && bash $(pwd)/scripts/docker-build-tag.sh latest
+        env:
+          PUSH: "true"
+        run: bash $(pwd)/scripts/docker-build-tag.sh latest
