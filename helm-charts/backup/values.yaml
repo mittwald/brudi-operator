@@ -15,7 +15,7 @@ cronjob:
 
 brudi:
   config: {}
-  # config:
+  # config: |
   #   tar:
   #     options:
   #       flags:
