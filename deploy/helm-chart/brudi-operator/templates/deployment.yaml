@@ -29,7 +29,11 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: WATCH_NAMESPACE
+              {{- if .Values.clusterScoped }}
+              value: ""
+              {{- else }}
               value: {{ .Release.Namespace }}
+              {{- end }}
             - name: POD_NAME
               valueFrom:
                 fieldRef:

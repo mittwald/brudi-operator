@@ -8,6 +8,8 @@ image:
   repository: quay.io/mittwald/brudi-operator
   pullPolicy: IfNotPresent
 
+clusterScoped: false
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
