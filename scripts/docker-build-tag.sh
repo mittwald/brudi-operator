@@ -9,8 +9,7 @@ IMAGE="${DOCKER_IMAGE}:${DOCKER_TAG}"
 
 operator-sdk build "${IMAGE}"
 
-if [[ -n "${PUSH}" && -n "${DOCKER_USER}" && -n "${DOCKER_PASSWORD}" ]]; then
-    docker login -u="${DOCKER_USER}" -p="${DOCKER_PASSWORD}" quay.io
+if [[ -n "${PUSH}" ]]; then
     docker push "${IMAGE}"
 fi
 
