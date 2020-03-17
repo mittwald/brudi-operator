@@ -5,6 +5,8 @@ metadata:
   {{- if .Values.clusterScoped }}
   namespace: {{ .Release.Namespace }}
   {{- end }}
+  annotations:
+    timestamp: {{ now | quote }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 spec:
