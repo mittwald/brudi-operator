@@ -3,7 +3,7 @@ name: Push stable Brudi-Operator
 on:
   push:
     tags:
-      - v*
+      - '*'
 
 jobs:
   Publish:
