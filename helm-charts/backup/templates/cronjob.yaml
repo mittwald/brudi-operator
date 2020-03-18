@@ -74,6 +74,6 @@ spec:
               volumeMounts:
                 - name: config-volume
                   mountPath: /etc/config
-              {{- with .Values.additionalVolumes }}
+              {{- with .Values.additionalVolumeMounts }}
                 {{- toYaml . | nindent 16 }}
               {{- end }}
