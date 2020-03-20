@@ -6,8 +6,8 @@ description: A Helm chart for deploying the brudi-operator to your kubernetes cl
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.0.2-beta.5
+version: 0.0.3-beta.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
-appVersion: 0.0.2-beta.5
+appVersion: 0.0.3-beta.1
