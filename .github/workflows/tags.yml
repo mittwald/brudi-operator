@@ -19,9 +19,11 @@ jobs:
         run: |
           docker login -u="${{ secrets.DOCKER_USER }}" -p="${{ secrets.DOCKER_PASSWORD }}" quay.io
 
-      - name: Push brudi-operator latest
+      - name: Push brudi-operator stable
         env:
           PUSH: "true"
+          GITHUB_TOKEN: "${{ secrets.MITTWALD_MACHINE_TOKEN }}"
         run: >
           bash $(pwd)/scripts/docker-build-tag.sh "stable" &&
-          bash $(pwd)/scripts/docker-build-tag.sh "${GITHUB_REF:10}"
+          bash $(pwd)/scripts/docker-build-tag.sh "${GITHUB_REF:10}" &&
+          bash $(pwd)/scripts/bump-app-version.sh push
