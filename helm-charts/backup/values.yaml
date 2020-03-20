@@ -22,9 +22,23 @@ brudi:
     #       host: test-mongodb
     #       port: 27017
     #       out: /tmp/mongo.dump
+    # restic:
+    #   forget:
+    #     flags:
+    #       keepDaily: 7
+    #       keepHourly: 24
+    #       keepLast: 48
+    #       keepMonthly: 6
+    #       keepWeekly: 2
+    #       keepYearly: 2
+    #     ids: []
+    #   global:
+    #     flags:
+    #       repo: "YOUR_RESTIC_REPO"
   cli:
     command: "version"
     restic: false
+    resticForget: false
     cleanup: false
 
 additionalEnv: {}

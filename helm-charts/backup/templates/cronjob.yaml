@@ -64,6 +64,9 @@ spec:
                 {{-  if .Values.brudi.cli.restic }}
                 - "--restic"
                 {{-  end }}
+                {{-  if .Values.brudi.cli.resticForget }}
+                - "--restic-forget"
+                {{-  end }}
                 {{-  if .Values.brudi.cli.cleanup }}
                 - "--cleanup"
                 {{-  end }}
