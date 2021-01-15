@@ -1,0 +1,85 @@
+# Default values for backup.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: quay.io/mittwald/brudi
+  #tag: "" # If no tag is given, {{ Chart.appVersion }} is used
+  pullPolicy: IfNotPresent
+
+job:
+  restartPolicy: Never
+  concurrencyPolicy: Forbid
+
+brudi:
+  config: {}
+    # mongodump:
+    #   options:
+    #     flags:
+    #       host: test-mongodb
+    #       port: 27017
+    #       out: /tmp/mongo.dump
+    # restic:
+    #   forget:
+    #     flags:
+    #       keepDaily: 7
+    #       keepHourly: 24
+    #       keepLast: 48
+    #       keepMonthly: 6
+    #       keepWeekly: 2
+    #       keepYearly: 2
+    #     ids: []
+    #   global:
+    #     flags:
+    #       repo: "YOUR_RESTIC_REPO"
+  cli:
+    command: "version"
+    restic: false
+    resticForget: false
+    cleanup: false
+
+additionalEnv: {}
+
+additionalLabels: {}
+
+additionalVolumes: {}
+# - name: my-data-volume
+#   persistentVolumeClaim:
+#     claimName: my-data-volume-claim
+
+additionalVolumeMounts: {}
+# - mountPath: "/srv/state/"
+#   name: my-data-volume
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
