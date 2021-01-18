@@ -1,15 +1,38 @@
 # brudi-operator
-The brudi-operator is a Helm-based kubernetes operator for the [`brudi`](https://github.com/mittwald/brudi) backup tool. It offers easy control of `brudi` in your kubernetes-cluster via custom `backup` and `restore` resources, which can be sued to shedule backups at regular intervals or restore them if needed, with the operator handling the specifics such as cron and container creation.
+The brudi-operator is a Helm-based kubernetes operator for the [`brudi`](https://github.com/mittwald/brudi) backup tool. It offers easy control over `brudi` in your kubernetes-cluster via custom `backup` and `restore` resources. These can be sued to schedule backups at regular intervals or restore data, if needed, with the operator handling the specifics such as cron and container creation.
 
 ## Table of contents
 
+  * [Deployment](#deployment)
+  * [Usage](#usage)
+     * [Create backups](#create-backups)
+     * [Restore from backups](#restore-from-backups)
+
+
 ## Deployment
 
+As mentioned in the introduction, `brudi-operaotr` is based on [Helm](https://helm.sh/). Refer to Helm's [documentation](documentation) to get started, then follow the steps below
+
+1. [Add the Mittwald-Charts Repo](https://github.com/mittwald/helm-charts)
+
+```
+$ helm repo add mittwald https://helm.mittwald.de
+"mittwald" has been added to your repositories
+
+$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "mittwald" chart repository
+Update Complete. ⎈ Happy Helming!⎈
+```
+
+2. Upgrade or install `brudi-operator` `helm upgrade --install brudi-operator mittwald/brudi-operator`
 ## Usage
 
 ### Create backups
 
+Automatic backups in the form of `cronjobs` can be scheduled using `backup` resources. The operator will watch for these resources and create or delete matching `cronjobs` when a `backup` resource is created/deleted. To create a resource, simply create a `.yaml` file that describes it and apply it to your cluster, the operator will take care of the rest.
 Example for backing up a mongodb every 15 minutes and storing the backups in a restic repository:
+
 ```yaml
 apiVersion: mittwald.systems/v1alpha1
 kind: Backup
@@ -81,8 +104,11 @@ spec:
   affinity: {}
 ```
 
+For more configuration options please refer to the [brudi backup documentation](https://github.com/mittwald/brudi#sources)
+
 ### Restore from backups
 
+Restoration from backup is done with `jobs`, which are created via `restore` resources.  
 Example to restore a mongodb from the last restic backup
 ```yaml
 apiVersion: mittwald.systems/v1alpha1
@@ -146,3 +172,5 @@ spec:
 
   affinity: {}
 ```
+
+For more configuration options please refer to the [brudi restore documentation](https://github.com/mittwald/brudi#restoring-from-backup)
