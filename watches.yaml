@@ -3,3 +3,7 @@
   group: mittwald.systems
   kind: Backup
   chart: helm-charts/backup
+- version: v1alpha1
+  group: mittwald.systems
+  kind: Restore
+  chart: helm-charts/restore
