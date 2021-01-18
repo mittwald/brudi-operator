@@ -3,7 +3,7 @@ kind: Restore
 metadata:
   name: example-restore
 spec:
-  # Default values copied from <project_dir>/helm-charts/backup/values.yaml
+  # Default values copied from <project_dir>/helm-charts/restore/values.yaml
   image:
     repository: quay.io/mittwald/brudi
     #tag: "" # If no tag is given, {{ Chart.appVersion }} is used
