@@ -17,12 +17,12 @@ jobs:
 
       - name: Log into registry
         run: |
-          docker login -u="${{ secrets.DOCKER_USER }}" -p="${{ secrets.DOCKER_PASSWORD }}" quay.io
+          docker login -u="${{ secrets.QUAY_IO_USER }}" -p="${{ secrets.QUAY_IO_TOKEN }}" quay.io
 
       - name: Push brudi-operator stable
         env:
           PUSH: "true"
-          GITHUB_TOKEN: "${{ secrets.MITTWALD_MACHINE_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.RELEASE_USER_TOKEN }}"
         run: >
           bash $(pwd)/scripts/docker-build-tag.sh "stable" &&
           bash $(pwd)/scripts/docker-build-tag.sh "${GITHUB_REF:10}" &&
