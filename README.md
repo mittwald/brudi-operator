@@ -11,7 +11,7 @@ The brudi-operator is a Helm-based kubernetes operator for the [`brudi`](https:/
 
 ## Deployment
 
-As mentioned in the introduction, `brudi-operaotr` is based on [Helm](https://helm.sh/). Refer to Helm's [documentation](documentation) to get started, then follow the steps below
+As mentioned in the introduction, `brudi-operator` is based on [Helm](https://helm.sh/). Refer to Helm's [documentation](documentation) to get started, then follow the steps below
 
 1. [Add the Mittwald-Charts Repo](https://github.com/mittwald/helm-charts)
 
@@ -26,6 +26,11 @@ Update Complete. ⎈ Happy Helming!⎈
 ```
 
 1. Upgrade or install `brudi-operator` `helm upgrade --install brudi-operator mittwald/brudi-operator`
+
+### Upgrade Notes
+
+#### Upgrade to >=0.1.0
+The crd was moved from the helm `templates` directory to `crds`. To prevent the deletion of the crd on upgrade, upgrade to `0.0.3-beta.3` first!
 
 ## Usage
 
