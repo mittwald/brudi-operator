@@ -27,6 +27,11 @@ Update Complete. ⎈ Happy Helming!⎈
 
 1. Upgrade or install `brudi-operator` `helm upgrade --install brudi-operator mittwald/brudi-operator`
 
+### Upgrade Notes
+
+#### Upgrade to >=0.1.0
+The crd was moved from the helm `templates` directory to `crds`. To prevent the deletion of the crd on upgrade, upgrade to `0.0.3-beta.3` first!
+
 ## Usage
 
 ### Create backups
