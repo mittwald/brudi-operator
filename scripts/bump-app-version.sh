@@ -62,7 +62,7 @@ if [[ "${1}" == "publish" ]]; then
     git push publisher master
 
     ## upload chart
-    helm repo add mittwald https://helm.mittwald.de
+    helm repo add mittwald https://helm.mittwald.de --force-update
     helm push "${CHART_PATH}" mittwald
 
 fi
