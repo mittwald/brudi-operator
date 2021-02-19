@@ -11,6 +11,10 @@ fi
 GIT_REPOSITORY="github.com/mittwald/brudi-operator.git"
 CHART_YAML="./deploy/helm-chart/brudi-operator/Chart.yaml"
 
+## convert chart-variables to absolute pathing
+CHART_YAML="$(readlink -f "${CHART_YAML}")"
+CHART_PATH="$(dirname "${CHART_YAML}")"
+
 ## avoid noisy shellcheck warnings
 TAG="${GITHUB_REF:10}"
 [[ -n "${TAG}" ]] || TAG="0.0.0"
@@ -58,8 +62,8 @@ if [[ "${1}" == "publish" ]]; then
     git push publisher master
 
     ## upload chart
-    helm repo add mittwald https://helm.mittwald.de
-    helm push ./deploy/helm-chart/brudi-operator/ mittwald
+    helm repo add mittwald https://helm.mittwald.de --force-update
+    helm push "${CHART_PATH}" mittwald
 
 fi
 
