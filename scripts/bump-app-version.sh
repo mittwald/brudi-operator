@@ -57,8 +57,9 @@ if [[ "${1}" == "publish" ]]; then
     ## publish changes
     git push publisher master
 
-    ## trigger helm-charts reload
-    curl -X POST 'https://api.github.com/repos/mittwald/helm-charts/dispatches' -u "mittwald-machine:${GITHUB_TOKEN}" -d '{"event_type": "updateCharts"}'
+    ## upload chart
+    helm repo add mittwald https://helm.mittwald.de
+    helm push ./deploy/helm-chart/brudi-operator/ mittwald
 
 fi
 
