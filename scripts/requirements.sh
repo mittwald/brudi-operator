@@ -28,6 +28,9 @@ if [[ ! -x "$(command -v helm)" ]]; then
     chmod +x ${HELM_BIN}
 fi
 
+## Install Helm push
+helm plugin install https://github.com/chartmuseum/helm-push.git
+
 ## Install Docker-CE
 if [[ ! -x "$(command -v docker)" ]]; then
     curl -sS -L https://get.docker.com/ | bash
