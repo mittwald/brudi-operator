@@ -11,7 +11,7 @@ The brudi-operator is a Helm-based kubernetes operator for the [`brudi`](https:/
 
 ## Deployment
 
-As mentioned in the introduction, `brudi-operaotr` is based on [Helm](https://helm.sh/). Refer to Helm's [documentation](documentation) to get started, then follow the steps below
+As mentioned in the introduction, `brudi-operator` is based on [Helm](https://helm.sh/). Refer to Helm's [documentation](documentation) to get started, then follow the steps below
 
 1. [Add the Mittwald-Charts Repo](https://github.com/mittwald/helm-charts)
 
