@@ -10,9 +10,6 @@ fi
 ## make this script a bit more re-usable
 GIT_REPOSITORY="github.com/mittwald/brudi-operator.git"
 CHART_YAML="./deploy/helm-chart/brudi-operator/Chart.yaml"
-
-## convert chart-variables to absolute pathing
-CHART_YAML="$(readlink -f "${CHART_YAML}")"
 CHART_PATH="$(dirname "${CHART_YAML}")"
 
 ## avoid noisy shellcheck warnings
