@@ -27,7 +27,7 @@ jobs:
           bash $(pwd)/scripts/docker-build-tag.sh "${GITHUB_REF:10}"
 
       - name: Run chart version bump
-        uses: mittwald/bump-app-version-action@v0.3.1
+        uses: mittwald/bump-app-version-action@v1
         with:
           mode: 'publish'
           chartYaml: './deploy/helm-chart/brudi-operator/Chart.yaml'
