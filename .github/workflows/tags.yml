@@ -32,5 +32,5 @@ jobs:
           mode: 'publish'
           chartYaml: './deploy/helm-chart/brudi-operator/Chart.yaml'
         env:
-          GITHUB_TOKEN: "${{ secrets.githubToken }}"
+          GITHUB_TOKEN: "${{ secrets.RELEASE_USER_TOKEN }}"
           HELM_REPO_PASSWORD: "${{ secrets.HELM_REPO_PASSWORD }}"
