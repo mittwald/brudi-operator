@@ -22,10 +22,15 @@ jobs:
       - name: Push brudi-operator stable
         env:
           PUSH: "true"
-          GITHUB_TOKEN: "${{ secrets.RELEASE_USER_TOKEN }}"
-          HELM_REPO_USERNAME: "${{ secrets.HELM_REPO_USERNAME }}"
-          HELM_REPO_PASSWORD: "${{ secrets.HELM_REPO_PASSWORD }}"
         run: >
           bash $(pwd)/scripts/docker-build-tag.sh "stable" &&
-          bash $(pwd)/scripts/docker-build-tag.sh "${GITHUB_REF:10}" &&
-          bash $(pwd)/scripts/bump-app-version.sh publish
+          bash $(pwd)/scripts/docker-build-tag.sh "${GITHUB_REF:10}"
+
+      - name: Run chart version bump
+        uses: mittwald/bump-app-version-action@v0.3.1
+        with:
+          mode: 'publish'
+          chartYaml: './deploy/helm-chart/brudi-operator/Chart.yaml'
+        env:
+          GITHUB_TOKEN: "${{ secrets.githubToken }}"
+          HELM_REPO_PASSWORD: "${{ secrets.HELM_REPO_PASSWORD }}"
