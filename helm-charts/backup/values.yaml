@@ -9,7 +9,7 @@ image:
 
 cronjob:
   schedule: '*/15 * * * *'
-  restartPolicy: never
+  restartPolicy: Never
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
