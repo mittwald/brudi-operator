@@ -46,7 +46,7 @@ rules:
       - batch
     resources:
       - cronjobs
-      - -jobs
+      - jobs
     verbs:
       - '*'
   - apiGroups:
