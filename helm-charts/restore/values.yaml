@@ -42,6 +42,8 @@ additionalEnv: {}
 
 additionalLabels: {}
 
+additionalAnnotations: {}
+
 additionalVolumes: {}
 # - name: my-data-volume
 #   persistentVolumeClaim:
