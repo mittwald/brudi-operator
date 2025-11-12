@@ -15,6 +15,10 @@ spec:
       {{- with .Values.additionalLabels }}
         {{- toYaml . | nindent 12 }}
       {{- end }}
+      {{- with .Values.additionalAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 12 }}
+      {{- end }}
     spec:
       restartPolicy: {{ .Values.job.restartPolicy | quote }}
     {{- with .Values.imagePullSecrets }}
