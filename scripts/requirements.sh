@@ -29,7 +29,12 @@ if [[ ! -x "$(command -v helm)" ]]; then
 fi
 
 ## Install Helm push
-helm plugin install https://github.com/chartmuseum/helm-push.git
+## Helm 4 refuses plugins from git sources unless verification is skipped; Helm 3 doesn't know the flag
+HELM_PLUGIN_INSTALL_ARGS=()
+if helm version --short | grep -q '^v4\.'; then
+    HELM_PLUGIN_INSTALL_ARGS+=(--verify=false)
+fi
+helm plugin install "${HELM_PLUGIN_INSTALL_ARGS[@]}" https://github.com/chartmuseum/helm-push.git
 
 ## Install Docker-CE
 if [[ ! -x "$(command -v docker)" ]]; then
